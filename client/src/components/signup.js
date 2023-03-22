@@ -10,6 +10,8 @@ const Signup = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [secPass, setSecPass] = useState("")
+    const [isOrganisation, setOrganisation] = useState("")
+    
 
     const handleSubmit = async(e) => {
         console.log(`Clicked`);
@@ -21,7 +23,7 @@ const Signup = () => {
                 headers: {
                   "Content-Type": "application/json",
                 },
-                body: JSON.stringify({"name": name, "email": email , "password": password}),
+                body: JSON.stringify({"name": name, "email": email , "password": password, "isOrganisation": isOrganisation}),
             });
             
             const json = await response.json();
@@ -53,6 +55,10 @@ const Signup = () => {
                     <div className="form-group">
                         <label>Confirm Password</label>
                         <input type="password" className="form-control" value={secPass} onChange={(e) => setSecPass(e.target.value)} id="textFormControlInput1" required={true}></input>
+                    </div>
+                    <div className="form-group">
+                        <label>Are you a organisation</label>
+                        <input type="checkbox" className="form-control" value={isOrganisation} onChange={(e) => setOrganisation(e.target.value)} id="textFormControlInput1" ></input>
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
